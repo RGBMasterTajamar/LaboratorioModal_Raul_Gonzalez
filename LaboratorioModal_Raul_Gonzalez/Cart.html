@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Carrito de compras</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <div class="container" id="productList">
+        <h1>Lista de productos</h1>
+        <table class="table">
+            <tr>
+                <th>Nombre del producto</th>
+                <th>Stock disponible</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Producto 1</td>
+                <td>30</td>
+                <td>
+                    <input class="btn btn-primary openModal" type="button" value="Agregar al carrito" />
+                </td>
+            </tr>
+            <tr>
+                <td>Producto 2</td>
+                <td>20</td>
+                <td><input class="btn btn-primary openModal" type="button" value="Agregar al carrito" /></td>
+            </tr>
+            <tr>
+                <td>Producto 3</td>
+                <td>50</td>
+                <td><input class="btn btn-primary openModal" type="button" value="Agregar al carrito" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class="container" id="cart" hidden>
+
+    </div>
+    <div class="modal" id="modal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Añadir al carrito</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <label for="selectedProd">Producto seleccionado:</label><br />
+                    <input class="form-control" type="text" id="selectedProd" disabled/>
+                    <br />
+                    <label for="quantitySelected">Cantidad:</label><br />
+                    <input class="form-control" type="number" id="quantitySelected"/>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Añadir</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $(".openModal").on("click", function () {
+            var modal = new bootstrap.Modal($("#modal"), { backdrop: 'static', keyboard: false });
+            modal.show();
+        });
+    });
+</script>
